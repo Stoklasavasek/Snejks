@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hra Snake</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        canvas {
+            border: 1px solid #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>    
+</head>
+
+<body>
+    <h1>Vítejte ve hře Snake</h1>
+    
+    <canvas id="game" width="400" height="400"></canvas>
+    <button id="restartButton">Hrát znovu!</button>
+    <script src="index.js"></script>
+</body>
+</html>
