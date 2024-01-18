@@ -109,7 +109,7 @@ function isGameOver() {
 function drawScore() {
     ctx.fillStyle = "white";
     ctx.font = "10px Verdana";
-    ctx.fillText("Score " + score, canvas.width - 50, 10);
+    ctx.fillText("Jablicek " + score, canvas.width - 50, 10);
 }
 
 // Vyčištění obrazovky
