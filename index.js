@@ -10,7 +10,6 @@ class SnakePart {
     }
 }
 
-// Inicializace herních proměnných
 let speed = 7;  // Rychlost pohybu hada
 let tileCount = 20;  // Počet dlaždic na herní ploše
 let tileSize = canvas.width / tileCount - 2;  // Velikost dlaždice hada
@@ -25,7 +24,7 @@ let inputsYVelocity = 0;  // Vstupní rychlost pohybu hada (Y)
 let xVelocity = 0;  // Aktuální rychlost pohybu hada (X)
 let yVelocity = 0;  // Aktuální rychlost pohybu hada (Y)
 let score = 0;  // Skóre hráče
-const gulpSound = new Audio("gulp.mp3");  // Zvuk při sežrání jablka
+const gulpSound = new Audio("zvuk.mp3");  // Zvuk při sežrání jablka
 
 // Hlavní herní smyčka
 function drawGame() {
@@ -88,20 +87,6 @@ function isGameOver() {
         }
     }
 
-    // Zobrazení "Game Over" v případě konce hry
-    if (gameOver) {
-        ctx.fillStyle = "white";
-        ctx.font = "50px Verdana";
-
-        var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-        gradient.addColorStop("0", "magenta");
-        gradient.addColorStop("0.5", "blue");
-        gradient.addColorStop("1.0", "red");
-
-        ctx.fillStyle = gradient;
-        ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 2);
-    }
-
     return gameOver;
 }
 
@@ -109,7 +94,7 @@ function isGameOver() {
 function drawScore() {
     ctx.fillStyle = "white";
     ctx.font = "10px Verdana";
-    ctx.fillText("Jablicek " + score, canvas.width - 50, 10);
+    ctx.fillText("Jablicek " + score, canvas.width - 60, 10);
 }
 
 // Vyčištění obrazovky
