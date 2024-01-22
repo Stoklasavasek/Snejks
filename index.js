@@ -5,26 +5,47 @@ const ctx = canvas.getContext("2d");
 // Třída reprezentující části hada
 class SnakePart {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        this.x = x;  // Nastavení souřadnice X pro část hada
+        this.y = y;  // Nastavení souřadnice Y pro část hada
     }
 }
 
-let speed = 7;  // Rychlost pohybu hada
-let tileCount = 20;  // Počet dlaždic na herní ploše
-let tileSize = canvas.width / tileCount - 2;  // Velikost dlaždice hada
-let headX = 10;  // Počáteční pozice hlavy hada (X)
-let headY = 10;  // Počáteční pozice hlavy hada (Y)
-const snakeParts = [];  // Pole pro ukládání částí hada
-let tailLength = 2;  // Počáteční délka hada
-let appleX = 5;  // Počáteční pozice jablka (X)
-let appleY = 5;  // Počáteční pozice jablka (Y)
-let inputsXVelocity = 0;  // Vstupní rychlost pohybu hada (X)
-let inputsYVelocity = 0;  // Vstupní rychlost pohybu hada (Y)
-let xVelocity = 0;  // Aktuální rychlost pohybu hada (X)
-let yVelocity = 0;  // Aktuální rychlost pohybu hada (Y)
-let score = 0;  // Skóre hráče
-const gulpSound = new Audio("zvuk.mp3");  // Zvuk při sežrání jablka
+// Nastavení rychlosti pohybu hada
+let speed = 7;
+
+// Počet dlaždic na herní ploše
+let tileCount = 20;
+
+// Velikost jedné dlaždice hada
+let tileSize = canvas.width / tileCount - 2;
+
+// Počáteční pozice hlavy hada (X a Y)
+let headX = 10;
+let headY = 10;
+
+// Pole pro ukládání částí hada
+const snakeParts = [];
+
+// Počáteční délka hada
+let tailLength = 2;
+
+// Počáteční pozice jablka (X a Y)
+let appleX = 5;
+let appleY = 5;
+
+// Vstupní rychlost pohybu hada (X a Y)
+let inputsXVelocity = 0;
+let inputsYVelocity = 0;
+
+// Aktuální rychlost pohybu hada (X a Y)
+let xVelocity = 0;
+let yVelocity = 0;
+
+// Skóre hráče
+let score = 0;
+
+// Zvuk při sežrání jablka
+const gulpSound = new Audio("zvuk.mp3");
 
 // Hlavní herní smyčka
 function drawGame() {
@@ -90,7 +111,7 @@ function isGameOver() {
     return gameOver;
 }
 
-// Vykreslení skóre
+// Vykreslení skóre na canvas
 function drawScore() {
     ctx.fillStyle = "white";
     ctx.font = "10px Verdana";
@@ -103,7 +124,7 @@ function clearScreen() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Vykreslení hada
+// Funkce pro přidání nové části hada a vykreslení hada
 function drawSnake() {
     ctx.fillStyle = "green";
     for (let i = 0; i < snakeParts.length; i++) {
@@ -130,7 +151,7 @@ function changeSnakePosition() {
     headY = headY + yVelocity;
 }
 
-// Vykreslení jablka
+// Vykreslení jablka na canvas
 function drawApple() {
     ctx.fillStyle = "red";
     ctx.fillRect(appleX * tileCount, appleY * tileCount, tileSize, tileSize);
@@ -159,28 +180,36 @@ document.body.addEventListener("keydown", keyDown);
 function keyDown(event) {
     // Nahoru
     if (event.keyCode == 38 || event.keyCode == 87) {
+        // Pokud je aktuální rychlost pohybu dolů (Y = 1), nenastavujeme pohyb nahoru
         if (inputsYVelocity == 1) return;
+        // Nastavení vstupní rychlosti pohybu nahoru (Y = -1)
         inputsYVelocity = -1;
         inputsXVelocity = 0;
     }
 
     // Dolů
     if (event.keyCode == 40 || event.keyCode == 83) {
+        // Pokud je aktuální rychlost pohybu nahoru (Y = -1), nenastavujeme pohyb dolů
         if (inputsYVelocity == -1) return;
+        // Nastavení vstupní rychlosti pohybu dolů (Y = 1)
         inputsYVelocity = 1;
         inputsXVelocity = 0;
     }
 
     // Vlevo
     if (event.keyCode == 37 || event.keyCode == 65) {
+        // Pokud je aktuální rychlost pohybu vpravo (X = 1), nenastavujeme pohyb vlevo
         if (inputsXVelocity == 1) return;
+        // Nastavení vstupní rychlosti pohybu vlevo (X = -1)
         inputsYVelocity = 0;
         inputsXVelocity = -1;
     }
 
     // Vpravo
     if (event.keyCode == 39 || event.keyCode == 68) {
+        // Pokud je aktuální rychlost pohybu vlevo (X = -1), nenastavujeme pohyb vpravo
         if (inputsXVelocity == -1) return;
+        // Nastavení vstupní rychlosti pohybu vpravo (X = 1)
         inputsYVelocity = 0;
         inputsXVelocity = 1;
     }
